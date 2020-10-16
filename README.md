@@ -1,8 +1,8 @@
 # dsflume-plugins
 
-方便业务线满足[《数据中台数据流接入规范V2》](https://gitlab.opg.cn/snippets/21)的Flume插件集。
+方便业务线满足[《数据中台数据流接入规范V2》](https://gitlab.opg.cn/snippets/21)的**通用Flume插件集**。
 
-业务线可以直接使用这些插件将自身流式日志转换成数据中台V2标准要求的CSV格式，业务线的开发维护成本是编写标准Flume配置文件。
+业务线可以直接使用这些插件将自身流式日志转换成数据中台V2标准要求的CSV格式，**业务线的开发和维护成本是编写标准Flume配置文件**。
 
 ## 拦截器(interceptors)
 
