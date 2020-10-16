@@ -29,7 +29,8 @@ logbiz | - | 同《数据中台数据流接入规范V2》中描述
 
 假设原始日志如下：
 ```text
-10.210.6.1 - - [03/Oct/2020:21:52:06 +0800] "GET / HTTP/1.1" 200 4833 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36" "-"
+10.210.6.1 - - [03/Oct/2020:21:52:06 +0800] "GET /呵呵 HTTP/1.1" 200 4833 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36" "-"
+10.210.6.1 - - [03/Oct/2020:21:52:15 +0800] "GET /呵呵?a=_&b=|&c=-; HTTP/1.1" 200 12345 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36" "-"
 10.210.6.1 - - [03/Oct/2020:21:53:04 +0800] "GET /favicon.ico HTTP/1.1" 404 3650 "http://10.210.6.2/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36" "-"
 ```
 
@@ -46,7 +47,8 @@ a1.sources.r1.interceptors.i1.logbiz = ABC
 
 将会生成数据：
 ```text
-V2|10.1.2.3|ABC_SOME_DATA_TYPE_NAME|ABC|2020-10-16 13:59:57|10.210.6.1|03/Oct/2020:21:52:06 +0800|GET / HTTP/1.1|200|4833
+V2|10.1.2.3|ABC_SOME_DATA_TYPE_NAME|ABC|2020-10-16 13:59:57|10.210.6.1|03/Oct/2020:21:52:06 +0800|GET /呵呵 HTTP/1.1|200|4833
+V2|10.1.2.3|ABC_SOME_DATA_TYPE_NAME|ABC|2020-10-16 13:59:57|10.210.6.1|03/Oct/2020:21:52:06 +0800|"GET /呵呵?a=_&b=|&c=-; HTTP/1.1"|200|12345
 V2|10.1.2.3|ABC_SOME_DATA_TYPE_NAME|ABC|2020-10-16 13:59:57|10.210.6.1|03/Oct/2020:21:53:04 +0800|GET /favicon.ico HTTP/1.1|404|3650
 ```
 
