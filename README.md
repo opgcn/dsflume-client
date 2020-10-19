@@ -13,9 +13,11 @@
 Type | - | 组件类型，这个是：`cn.opg.ds.flume.interceptors.regex2v2$Builder`
 searchPattern | - | 包括*named-capturing group*的正则表达式
 outputNames | - | 空格分隔，需要生成CSV的第6及以后字段名
-stream_ip | 当前机器的第一个私有IP | 同《数据中台数据流接入规范V2》中描述
-stream_type | - | 同《数据中台数据流接入规范V2》中描述
-stream_biz | - | 同《数据中台数据流接入规范V2》中描述
+streamVer | `V2` | 同《数据中台数据流接入规范V2》中描述（`stream_ver`）
+streamIp | 当前机器的第一个私有IP | 同《数据中台数据流接入规范V2》中描述（`stream_ip`）
+streamType | - | 同《数据中台数据流接入规范V2》中描述（`stream_type`）
+streamBiz | - | 同《数据中台数据流接入规范V2》中描述（`stream_biz`）
+streamDtFmt | '%Y-%m-%d %H:%M:%S' | 同《数据中台数据流接入规范V2》中描述（`stream_dt`）的格式
 
 假设`nginx.conf`中配置的日志格式`log_format`是:
 ```text
