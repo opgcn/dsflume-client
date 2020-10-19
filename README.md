@@ -1,6 +1,6 @@
 方便业务线满足[《数据中台数据流接入规范V2》](https://gitlab.opg.cn/snippets/21)的**通用Flume插件集**。
 
-业务线可以直接使用这些插件将自身流式日志转换成数据中台V2标准要求的CSV格式，**业务线的开发和维护成本是编写标准Flume配置文件**。
+业务线可以直接使用这些插件将自身流式日志转换成数据中台V2标准要求的CSV格式数据流，**业务线的开发和维护成本是编写标准Flume配置文件**。
 
 ## 拦截器(interceptors)
 
@@ -13,9 +13,9 @@
 Type | - | 组件类型，这个是：`cn.opg.ds.flume.interceptors.regex2v2$Builder`
 searchPattern | - | 包括*named-capturing group*的正则表达式
 outputNames | - | 空格分隔，需要生成CSV的第6及以后字段名
-logip | - | 同《数据中台数据流接入规范V2》中描述
-logtype | - | 同《数据中台数据流接入规范V2》中描述
-logbiz | - | 同《数据中台数据流接入规范V2》中描述
+stream_ip | - | 同《数据中台数据流接入规范V2》中描述
+stream_type | - | 同《数据中台数据流接入规范V2》中描述
+stream_biz | - | 同《数据中台数据流接入规范V2》中描述
 
 假设`nginx.conf`中配置的日志格式`log_format`是:
 ```text
@@ -40,12 +40,12 @@ a1.sources.r1.interceptors = i1
 a1.sources.r1.interceptors.i1.type = cn.opg.ds.flume.interceptors.regex2v2$Builder
 a1.sources.r1.interceptors.i1.searchPattern = ^(?<remote_addr>.*?)\ \-\ (?<remote_user>.*?)\ \[(?<time_local>.*?)\]\ \"(?<request>.*?)\"\ (?<status>.*?)\ (?<body_bytes_sent>.*?)\ \"(?<http_referer>.*?)\"\ \"(?<http_user_agent>.*?)\"\ \"(?<http_x_forwarded_for>.*?)\"$
 a1.sources.r1.interceptors.i1.outputNames = remote_addr time_local request status body_bytes_sent
-a1.sources.r1.interceptors.i1.logip = ${FLUME_IP}
-a1.sources.r1.interceptors.i1.logtype = ABC_SOME_DATA_TYPE_NAME
-a1.sources.r1.interceptors.i1.logbiz = ABC
+a1.sources.r1.interceptors.i1.stream_ip = ${FLUME_IP}
+a1.sources.r1.interceptors.i1.stream_type = ABC_SOME_DATA_TYPE_NAME
+a1.sources.r1.interceptors.i1.stream_biz = ABC
 ```
 
-将会生成数据：
+将会生成数据流：
 ```text
 V2|10.1.2.3|ABC_SOME_DATA_TYPE_NAME|ABC|2020-10-16 13:59:57|10.210.6.1|03/Oct/2020:21:52:06 +0800|GET /呵呵 HTTP/1.1|200|4833
 V2|10.1.2.3|ABC_SOME_DATA_TYPE_NAME|ABC|2020-10-16 13:59:57|10.210.6.1|03/Oct/2020:21:52:06 +0800|"GET /呵呵?a=_&b=|&c=-; HTTP/1.1"|200|12345
