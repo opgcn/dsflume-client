@@ -42,9 +42,8 @@ a1.sources.r1.interceptors = i1
 a1.sources.r1.interceptors.i1.type = cn.opg.ds.flume.interceptors.regex2v2$Builder
 a1.sources.r1.interceptors.i1.searchPattern = ^(?<remote_addr>.*?)\ \-\ (?<remote_user>.*?)\ \[(?<time_local>.*?)\]\ \"(?<request>.*?)\"\ (?<status>.*?)\ (?<body_bytes_sent>.*?)\ \"(?<http_referer>.*?)\"\ \"(?<http_user_agent>.*?)\"\ \"(?<http_x_forwarded_for>.*?)\"$
 a1.sources.r1.interceptors.i1.outputNames = remote_addr time_local request status body_bytes_sent
-a1.sources.r1.interceptors.i1.stream_ip = ${FLUME_IP}
-a1.sources.r1.interceptors.i1.stream_type = ABC_SOME_DATA_TYPE_NAME
-a1.sources.r1.interceptors.i1.stream_biz = ABC
+a1.sources.r1.interceptors.i1.streamType = ABC_SOME_DATA_TYPE_NAME
+a1.sources.r1.interceptors.i1.streamBiz = ABC
 ```
 
 将会生成数据流：
