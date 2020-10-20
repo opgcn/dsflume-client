@@ -1,3 +1,14 @@
+# flume
+/conf/default.conf
+/conf/log4j.properties
+/bin
+/tools
+/lib
+/plugins
+/channels
+/sinks
+/logs
+
 # Compiled class file
 *.class
 
