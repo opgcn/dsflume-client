@@ -2,8 +2,7 @@
 
 赋能业务线快速实现[《数据中台数据流接入规范V2》](https://gitlab.opg.cn/snippets/21)的Flume客户端。包含以下引人功能：
 
-- 支持一键部署[Apache Flume NG社区版](http://flume.apache.org/releases/content/1.9.0/FlumeUserGuide.html)；
-- 将*Flume*包装成*Systemd*服务，方便生产级系统管理；
+- 支持一键部署[Apache Flume NG社区版](http://flume.apache.org/releases/content/1.9.0/FlumeUserGuide.html)，并将其*agent进程*包装成*Systemd*服务，方便生产级管理；
 - 提供通用的业务侧拦截器插件，方便业务线自行解析原始日志成为《数据中台数据流接入规范V2》要求格式的数据流；
 
 建议业务侧技术工程师先完整阅读[Flume官方文档](https://flume.liyifeng.org/)后，再进行使用。
@@ -147,7 +146,7 @@ V2|10.1.2.3|ABC_SOME_DATA_TYPE_NAME|ABC|2020-10-16 13:59:57|10.210.6.1|03/Oct/20
 
 属性 | 默认值 | 解释
 ---- | ---- | ----
-Type | - | 组件类型，这个是：`cn.opg.ds.flume.interceptors.proc$Builder`
+type | - | 组件类型，这个是：`cn.opg.ds.flume.interceptors.proc$Builder`
 channels | - | 与Source绑定的channel，多个用空格分开
 command | - | 所使用的系统命令，例如`python3 procs/my-proc.py --arg1 --arg2`
 restart | true | 如果执行命令线程挂掉，是否重启
