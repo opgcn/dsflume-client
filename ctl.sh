@@ -80,8 +80,8 @@ Usage:
     verify      Verify all channels' datadirs
                 $FLUME_DIR_CHANNELS/*/data/
     housekeep   Clean caches left over from history:
-                $FLUME_DIR_LOGS/ up to latest $LIFECYCLE_FLUME_LOGS days
-                $FLUME_DIR_SINKS/ up to latest $LIFECYCLE_SINK_DISCARDS days
+                $FLUME_DIR_LOGS/ with time threshold $LIFECYCLE_FLUME_LOGS
+                $FLUME_DIR_SINKS/ with time threshold $LIFECYCLE_SINK_DISCARDS
                 typically set in crontab:
                 @daily bash -l $(realpath ${BASH_SOURCE[0]}) housekeep
     test        Display commands sending testing V2 messages to localhost
