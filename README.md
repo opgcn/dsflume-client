@@ -37,35 +37,20 @@ chmod a+x ctl.sh
 ./ctl.sh reinstall
 ```
 
-创建默认配置，结合[Apache Flume官方文档](http://flume.apache.org/releases/content/1.9.0/FlumeUserGuide.html)修改：
+创建默认*agent*配置，结合[Apache Flume官方文档](http://flume.apache.org/releases/content/1.9.0/FlumeUserGuide.html)修改：
 ```bash
 cp conf/biz-example.conf conf/default.conf
 cat conf/default.conf
 ```
 
-安装*systemd*服务化支持：
+安装*systemd*的*unit*文件以支持服务管理：
 ```bash
 ./ctl.sh unit
 ```
 
-启动*dsflume-client*服务：
+查看使用`systemctl`管理*dsflume-client*服务的方式：
 ```bash
-./ctl.sh restart && ./ctl.sh status
-```
-
-跟踪*Apache Flume*应用日志：
-```bash
-tail -f logs/flume.log
-```
-
-通过本机*HTTP*协议*source*发送测试数据：
-```bash
-json='[
-{"header":{}, "body":"V2|'$(hostname -I | cut -d' ' -f1)'|EXAMPLE_TYPE_1|EXAMPLE|'$(date +"%F %T")'|line-1"},
-{"header":{}, "body":"V2|'$(hostname -I | cut -d' ' -f1)'|EXAMPLE_TYPE_2|EXAMPLE|'$(date +"%F %T")'|line-2"}
-]'
-echo "$json"
-curl -i localhost:20003 -H 'Content-Type: application/json;charset=utf-8' -d "$json"
+./ctl.sh systemctl
 ```
 
 ## 拦截器插件(interceptors)
@@ -152,6 +137,6 @@ command | - | 所使用的系统命令，例如`python3 procs/my-proc.py --arg1 
 restart | true | 如果执行命令线程挂掉，是否重启
 restartThrottle | 1000 | 尝试重新启动之前等待的时间（毫秒）
 
-
+> 待补充示例 @vbem
 
 
