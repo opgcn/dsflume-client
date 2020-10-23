@@ -133,7 +133,7 @@ V2|10.1.2.3|ABC_SOME_DATA_TYPE_NAME|ABC|2020-10-16 13:59:57|10.210.6.1|03/Oct/20
 ---- | ---- | ----
 type | - | 组件类型，这个是：`cn.opg.ds.flume.interceptors.proc$Builder`
 channels | - | 与Source绑定的channel，多个用空格分开
-command | - | 所使用的系统命令，例如`python3 procs/my-proc.py --arg1 --arg2`
+command | - | 所使用的系统命令，例如`python3 -u procs/my-proc.py --arg1 --arg2`
 restart | true | 如果执行命令线程挂掉，是否重启
 restartThrottle | 1000 | 尝试重新启动之前等待的时间（毫秒）
 
